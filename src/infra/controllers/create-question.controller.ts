@@ -3,7 +3,7 @@ import { AuthGuard } from "@nestjs/passport";
 import { CurrentUser } from "@/infra/http/auth/current-user-decorator";
 import { type UserPayload } from "@/infra/http/auth/jwt-strategy";
 import { ZodValidationPipe } from "@/infra/http/pipes/zod-validations-pipes";
-import { PrismaService } from "@/infra/http/prisma/prisma.service";
+import { PrismaService } from "@/infra/database/prisma/prisma.service";
 import z from "zod";
 
 

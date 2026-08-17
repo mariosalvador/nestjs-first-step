@@ -1,5 +1,5 @@
 import { QuestionCommentsRepository } from "../../repositories/question-comments-repository";
-import { QuetionsComment } from "@/domain/forum/enterprise/entities/questions-comments";
+import { QuestionComment } from "@/domain/forum/enterprise/entities/questions-comments";
 import { Either, right } from "@/core/either";
 
 interface FetchQuestionCommentsUseCaseInput {
@@ -7,10 +7,10 @@ interface FetchQuestionCommentsUseCaseInput {
   page: number;
 }
 
-type FetchQuestionCommentsUseCaseResponse = Either<null, { questionComments: QuetionsComment[] }>;
+type FetchQuestionCommentsUseCaseResponse = Either<null, { questionComments: QuestionComment[] }>;
 
 export class FetchQuestionCommentsUseCase {
-  constructor(private questionCommentsRepository: QuestionCommentsRepository) {}
+  constructor(private questionCommentsRepository: QuestionCommentsRepository) { }
 
   async execute({
     questionId,

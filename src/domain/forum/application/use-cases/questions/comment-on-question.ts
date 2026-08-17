@@ -1,6 +1,6 @@
 import { UniqueEntityId } from "@/core/entities/unique-entity-id";
 import { QuestionRepository } from "../../repositories/questions-repository";
-import { QuetionsComment } from "@/domain/forum/enterprise/entities/questions-comments";
+import { QuestionComment } from "@/domain/forum/enterprise/entities/questions-comments";
 import { QuestionCommentsRepository } from "../../repositories/question-comments-repository";
 import { Either, left, right } from "@/core/either";
 import { ResourceNotFoundError } from "../errors/resouce-not-found";
@@ -11,13 +11,13 @@ interface CommentOnQuestionUseCaseInput {
   content: string;
 }
 
-type CommentOnQuestionUseCaseResponse = Either<ResourceNotFoundError, { questionComment: QuetionsComment }>;
+type CommentOnQuestionUseCaseResponse = Either<ResourceNotFoundError, { questionComment: QuestionComment }>;
 
 export class CommentOnQuestionUseCase {
   constructor(
     private questionRepository: QuestionRepository,
     private questionCommentsRepository: QuestionCommentsRepository,
-  ) {}
+  ) { }
 
   async execute({
     authorId,
@@ -30,7 +30,7 @@ export class CommentOnQuestionUseCase {
       return left(new ResourceNotFoundError());
     }
 
-    const questionComment = QuetionsComment.create({
+    const questionComment = QuestionComment.create({
       authorId: new UniqueEntityId(authorId),
       questionId: new UniqueEntityId(questionId),
       content,
