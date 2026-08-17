@@ -1,8 +1,8 @@
 import { Body, Controller, Post, UnauthorizedException, UsePipes } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { compare } from "bcrypt";
-import { ZodValidationPipe } from "src/pipes/zod-validations-pipes";
-import { PrismaService } from "src/prisma/prisma.service";
+import { ZodValidationPipe } from "@/infra/http/pipes/zod-validations-pipes";
+import { PrismaService } from "@/infra/http/prisma/prisma.service";
 import z from "zod";
 
 

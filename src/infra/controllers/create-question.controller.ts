@@ -1,9 +1,9 @@
 import { Body, Controller, Post, UseGuards, UsePipes } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
-import { CurrentUser } from "src/auth/current-user-decorator";
-import { type UserPayload } from "src/auth/jwt-strategy";
-import { ZodValidationPipe } from "src/pipes/zod-validations-pipes";
-import { PrismaService } from "src/prisma/prisma.service";
+import { CurrentUser } from "@/infra/http/auth/current-user-decorator";
+import { type UserPayload } from "@/infra/http/auth/jwt-strategy";
+import { ZodValidationPipe } from "@/infra/http/pipes/zod-validations-pipes";
+import { PrismaService } from "@/infra/http/prisma/prisma.service";
 import z from "zod";
 
 

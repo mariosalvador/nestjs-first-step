@@ -1,8 +1,8 @@
 import { BadRequestException, Body, Controller, HttpCode, Post, UsePipes } from "@nestjs/common";
-import { PrismaService } from "src/prisma/prisma.service";
+import { PrismaService } from "@/infra/http/prisma/prisma.service";
 import { hash } from "bcrypt";
 import { z } from "zod";
-import { ZodValidationPipe } from "src/pipes/zod-validations-pipes";
+import { ZodValidationPipe } from "@/infra/http/pipes/zod-validations-pipes";
 
 const createAccountBodySchema = z.object({
   name: z.string(),
