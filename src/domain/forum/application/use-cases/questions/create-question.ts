@@ -4,6 +4,7 @@ import { Question } from "@/domain/forum/enterprise/entities/questions";
 import { Either, right } from "@/core/either";
 import { QuestionAttachment } from "src/domain/forum/enterprise/entities/questions-attachment";
 import { QuestionAttachmentList } from "./question-attachment-list";
+import { Injectable } from "@nestjs/common";
 
 interface CreateQuestionsUseCaseInput {
   authorId: string;
@@ -14,6 +15,7 @@ interface CreateQuestionsUseCaseInput {
 
 type CreateQuestionUseCaseResponse = Either<null, { question: Question }>;
 
+@Injectable()
 export class CreateQuestionsUseCase {
 
   constructor(private QuestionRepository: QuestionRepository) { }

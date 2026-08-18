@@ -8,6 +8,9 @@ interface FetchRecentQuestionsUseCaseInput {
 
 type FetchRecentQuestionsUseCaseResponse = Either<null, { questions: Question[] }>;
 
+import { Injectable } from "@nestjs/common";
+
+@Injectable()
 export class FetchRecentQuestionsUseCase {
 
   constructor(private QuestionRepository: QuestionRepository) { }

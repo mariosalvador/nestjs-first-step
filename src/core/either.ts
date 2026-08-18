@@ -2,12 +2,12 @@
 
 //Error
 class Left<L, R> {
-  readonly value: any;
+  readonly value: L;
 
   constructor(value: L) {
     this.value = value;
   }
-  isRigth(): this is Right<L, R> {
+  isRight(): this is Right<L, R> {
     return false;
   }
 
@@ -19,12 +19,12 @@ class Left<L, R> {
 
 // SUCEESS
 class Right<L, R> {
-  readonly value: any;
+  readonly value: R;
 
   constructor(value: R) {
     this.value = value;
   }
-  isRigth(): this is Right<L, R> {
+  isRight(): this is Right<L, R> {
     return true;
   }
 
