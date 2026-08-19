@@ -3,7 +3,7 @@ import { StudentRepository } from "../../repositories/student-repository";
 import { Hasher } from "../../repositories/cryptography/hasher";
 import { WrongCredentialsError } from "../errors/wrongs-credentials-error";
 import { Encrypter } from "../../repositories/cryptography/encrypter";
-
+import { Injectable } from "@nestjs/common";
 
 interface AuthenticateStudentRequest {
   email: string;
@@ -12,6 +12,7 @@ interface AuthenticateStudentRequest {
 
 type AuthenticateStudentResponse = Either<WrongCredentialsError, { accessToken: string }>
 
+@Injectable()
 export class AuthenticateStudentUseCase {
   constructor(
     private readonly studentRepository: StudentRepository,
