@@ -3,6 +3,7 @@ import { UniqueEntityId } from "src/core/entities/unique-entity-id";
 
 
 export interface CommentProps {
+  answerId: UniqueEntityId
   authorId: UniqueEntityId
   content: string
   createdAt: Date
@@ -16,6 +17,9 @@ export abstract class Comment<T extends CommentProps> extends Entity<T> {
   }
   get content() {
     return this.props.content;
+  }
+  get answerId() {
+    return this.props.answerId;
   }
   get authorId() {
     return this.props.authorId;
