@@ -2,6 +2,7 @@ import { Body, Controller, Post, UnauthorizedException, UsePipes } from "@nestjs
 import { ZodValidationPipe } from "@/infra/http/pipes/zod-validations-pipes";
 import z from "zod";
 import { AuthenticateStudentUseCase } from "@/domain/forum/application/use-cases/student/authenticate-student";
+import { Public } from "../http/auth/public";
 
 
 const authenticateSchema = z.object({
@@ -12,6 +13,7 @@ const authenticateSchema = z.object({
 type AuthenticateSchema = z.infer<typeof authenticateSchema>;
 
 @Controller('/sessions')
+@Public()
 export class AutheticateController {
   constructor(
     private authenticateStudent: AuthenticateStudentUseCase

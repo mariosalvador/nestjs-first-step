@@ -15,7 +15,6 @@ const createQuestionSchema = z.object({
 type CreateQuestionSchema = z.infer<typeof createQuestionSchema>
 
 @Controller("/questions")
-@UseGuards(AuthGuard("jwt"))
 export class CreateQuestionsController {
   constructor(
     private readonly question: CreateQuestionsUseCase

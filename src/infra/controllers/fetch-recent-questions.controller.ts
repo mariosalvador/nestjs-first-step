@@ -19,7 +19,6 @@ const queryParamsValidator = new ZodValidationPipe(queryParamsSchema);
 type QueryParamsSchema = z.infer<typeof queryParamsSchema>;
 
 @Controller("/questions")
-@UseGuards(AuthGuard("jwt"))
 export class FetchRecentQuestionsController {
   constructor(private fetchRecentQuestions: FetchRecentQuestionsUseCase) { }
 
