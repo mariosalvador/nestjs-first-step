@@ -1,5 +1,6 @@
 import { PaginationParams } from "src/core/repositories/pagination-params";
 import { Question } from "../../enterprise/entities/questions";
+import { QuestionDetails } from "../../enterprise/entities/value-objects/question-details";
 
 
 export abstract class QuestionRepository {
@@ -8,5 +9,6 @@ export abstract class QuestionRepository {
   abstract edit(question: Question): Promise<void>
   abstract create(question: Question): Promise<void>
   abstract findBySlug(slug: string): Promise<Question | null>
+  abstract findDetailsBySlug(slug: string): Promise<QuestionDetails | null>
   abstract delete(question: Question): Promise<void>
 }
