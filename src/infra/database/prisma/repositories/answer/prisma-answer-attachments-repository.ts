@@ -25,4 +25,36 @@ export class PrismAnswerAttachmentsRepository implements AnswerAttachmentsReposi
       },
     });
   }
+
+  async createMany(attachments: AnswerAttachment[]): Promise<void> {
+    if (attachments.length === 0) {
+      return;
+    }
+    const attachmentIds = attachments.map(attachment => attachment.attachmentId.toString());
+    await this.prisma.attachment.updateMany({
+      where: {
+        id: {
+          in: attachmentIds,
+        }
+      },
+      data: {
+        answerId: attachments[0].answerId.toString(),
+      }
+    })
+  }
+
+  async deleteMany(attachments: AnswerAttachment[]): Promise<void> {
+    if (attachments.length === 0) {
+      return;
+    }
+
+    const attachmentIds = attachments.map(attachment => attachment.id.toString());
+    await this.prisma.attachment.deleteMany({
+      where: {
+        id: {
+          in: attachmentIds,
+        }
+      }
+    })
+  }
 }
