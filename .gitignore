@@ -83,3 +83,4 @@ private.pem
 public.pem
 private.base64
 public.base64
+dist/tsconfig.build.tsbuildinfo

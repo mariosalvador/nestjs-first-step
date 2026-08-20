@@ -1,6 +1,7 @@
 import { QuestionCommentsRepository } from "../../repositories/question-comments-repository";
 import { QuestionComment } from "@/domain/forum/enterprise/entities/questions-comments";
 import { Either, right } from "@/core/either";
+import { Injectable } from "@nestjs/common";
 
 interface FetchQuestionCommentsUseCaseInput {
   questionId: string;
@@ -9,6 +10,8 @@ interface FetchQuestionCommentsUseCaseInput {
 
 type FetchQuestionCommentsUseCaseResponse = Either<null, { questionComments: QuestionComment[] }>;
 
+
+@Injectable()
 export class FetchQuestionCommentsUseCase {
   constructor(private questionCommentsRepository: QuestionCommentsRepository) { }
 

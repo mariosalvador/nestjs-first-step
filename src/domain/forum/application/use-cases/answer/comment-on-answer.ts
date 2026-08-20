@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common";
 import { UniqueEntityId } from "@/core/entities/unique-entity-id";
 import { AnswerRepository } from "../../repositories/answer-repository";
 import { AnswerComment } from "@/domain/forum/enterprise/entities/answer-comments";
@@ -13,11 +14,13 @@ interface CommentOnAnswerUseCaseInput {
 
 type CommentOnAnswerUseCaseResponse = Either<ResourceNotFoundError, { answerComment: AnswerComment }>;
 
+
+@Injectable()
 export class CommentOnAnswerUseCase {
   constructor(
     private answerRepository: AnswerRepository,
     private answerCommentsRepository: AnswerCommentsRepository,
-  ) {}
+  ) { }
 
   async execute({
     authorId,

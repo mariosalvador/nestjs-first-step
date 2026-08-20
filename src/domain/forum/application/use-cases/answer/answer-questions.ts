@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common";
 import { UniqueEntityId } from "../../../../../core/entities/unique-entity-id";
 import { Answer } from "../../../enterprise/entities/answer";
 import { AnswerRepository } from "../../repositories/answer-repository";
@@ -14,6 +15,8 @@ interface AnswerQuestionsUseCaseInput {
 
 type AnswerQuestionsUseCaseResponse = Either<null, { answer: Answer }>;
 
+
+@Injectable()
 export class AnswerQuestionsUseCase {
 
   constructor(private answerRepository: AnswerRepository) { }
@@ -37,4 +40,4 @@ export class AnswerQuestionsUseCase {
     await this.answerRepository.create(answer);
     return right({ answer });
   }
-}
+}
