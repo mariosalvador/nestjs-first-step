@@ -3,10 +3,10 @@ import { UniqueEntityId } from "src/core/entities/unique-entity-id";
 
 
 interface AttachmentProps {
-  title: String;
+  title: string;
   link: string;
-  parentId: string;
-  parentType: "QUESTION" | "ANSWER";
+  parentId?: string;
+  parentType?: "QUESTION" | "ANSWER";
 }
 
 
