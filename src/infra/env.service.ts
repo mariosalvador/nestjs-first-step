@@ -11,7 +11,7 @@ export class EnvService {
     private readonly config: ConfigService<Env, true>
   ) { }
 
-  get(key: keyof Env) {
+  get<T extends keyof Env>(key: T) {
     return this.config.get(key, { infer: true });
   }
 }

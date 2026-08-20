@@ -40,12 +40,14 @@ import { FetchQuestionCommentsUseCase } from "@/domain/forum/application/use-cas
 import { FetchAnswerCommentsUseCase } from "@/domain/forum/application/use-cases/answer/fetch-answer-comments";
 import { UploadAttachmentsController } from "../controllers/upload-attachments.controller";
 import { UploadAndCreateAttachmentUseCase } from "@/domain/forum/application/use-cases/attachments/upload-and-create-attachment";
+import { StorageModule } from "../storage/storage.module";
 
 @Module({
   imports: [
     AuthModule,
     DatabaseModule,
-    CryptographyModule
+    CryptographyModule,
+    StorageModule
   ],
   controllers: [
     CreateAccountController,
