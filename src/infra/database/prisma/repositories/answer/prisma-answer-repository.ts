@@ -6,10 +6,13 @@ import { PrismaAnswerCommentsMapper } from "../../mappers/prisma-answer-comments
 import { PaginationParams } from "@/core/repositories/pagination-params";
 import { CommentWithAuthor } from "@/domain/forum/enterprise/entities/value-objects/comment-with-author";
 import { PrismaCommentWithAuthorMapper } from "../../mappers/prisma-comment-with-author-mapper";
+import { DomainEvents } from "@/core/events/domain-events";
 
 @Injectable()
 export class PrismAnswerCommentsRepository implements AnswerCommentsRepository {
-  constructor(private prisma: PrismaService) { }
+  constructor(
+    private prisma: PrismaService,
+  ) { }
 
   async findById(id: string): Promise<AnswerComment | null> {
     const answerComment = await this.prisma.comment.findUnique({
@@ -64,6 +67,8 @@ export class PrismAnswerCommentsRepository implements AnswerCommentsRepository {
     await this.prisma.comment.create({
       data,
     });
+
+    DomainEvents.dispatchEventsForAggregate(answerComment.id);
   }
 
   async delete(answerComment: AnswerComment): Promise<void> {
@@ -72,5 +77,7 @@ export class PrismAnswerCommentsRepository implements AnswerCommentsRepository {
         id: answerComment.id.toString(),
       },
     });
+
+    DomainEvents.dispatchEventsForAggregate(answerComment.id);
   }
 }
