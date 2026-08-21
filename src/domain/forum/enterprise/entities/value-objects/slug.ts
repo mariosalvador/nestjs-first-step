@@ -22,7 +22,15 @@ export class Slug {
    */
 
   static createFromText(text: string) {
-    const slugText = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, "-");
+    const slugText = text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "") // Remove acentos
+      .replace(/[^\w\s-]/g, "")        // Remove qualquer caractere que não seja letra, número, espaço ou traço (REMOVE O '?')
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, "-");           // Troca espaços por traços
+
     return new Slug(slugText);
   }
+
 }
